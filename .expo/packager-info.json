@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 12099,
+  "packagerPid": 8729,
   "expoServerNgrokUrl": "https://mw-n7p.anonymous.confusion.exp.direct",
   "packagerNgrokUrl": "https://packager.mw-n7p.anonymous.confusion.exp.direct",
-  "ngrokPid": 12129
+  "ngrokPid": 8749
 }
