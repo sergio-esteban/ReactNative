@@ -15,9 +15,9 @@ You will be able to:
 - [x] (c) Use various features of React Native and the Expo SDK to build truly cross-platform mobile applications, and
 - [x] (d) Use Redux to design the architecture for a React-Redux application.
 
+ß
 
-
-This project was bootstrapped with [Create React App](https://github.com/react-community/create-react-native-app).
+This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Install the [Expo](https://expo.io/) app on your Android device.
 
@@ -34,15 +34,6 @@ The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 # readme_template
 my readme template, originally by Billie Thompson
-
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Installing
 
@@ -61,30 +52,6 @@ until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 
 ## Contributing
