@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
+import { LinearGradient } from 'react-native-linear-gradient';
+
 import { DISHES } from '../shared/dishes';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
@@ -19,6 +21,24 @@ function RenderItem(props) {
         <Text style={{ margin: 10 }}>
           {item.description}
         </Text>
+        <Button
+          icon={
+            <Icon
+              name="md-card"
+              type="ionicon"
+              size={26}
+              color="white"
+            />
+          }
+          iconRight
+          title="Buy Now "
+          ViewComponent={LinearGradient} // Don't forget this!
+          linearGradientProps={{
+            colors: ['#84fab0', '#8fd3f4'],
+            start: { x: 0, y: 0.5 },
+            end: { x: 1, y: 0.5 },
+          }}
+        />
       </Card>
     )
   } else {

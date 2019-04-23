@@ -105,12 +105,16 @@ const MainNavigator = createDrawerNavigator({
     navigationOptions: {
       title: 'Home',
       drawerLabel: 'Home',
-      drawerIcon: ({ tintColor }) => (
+      drawerIcon: ({ tintColor, focused }) => (
         <Icon
-          name="home"
-          type="font-awesome"
-          size={24}
+          name="md-home"
+          type="ionicon"
+          size={26}
           color={tintColor}
+          focused={true}
+          iconStyle={{
+            opacity: .8,
+          }}
         />
       )
     }
@@ -122,9 +126,9 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'About Us',
       drawerIcon: ({ tintColor }) => (
         <Icon
-          name="info-circle"
-          type="font-awesome"
-          size={24}
+          name="md-information-circle"
+          type="ionicon"
+          size={26}
           color={tintColor}
         />
       )
@@ -137,9 +141,9 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'Menu',
       drawerIcon: ({ tintColor }) => (
         <Icon
-          name="list"
-          type="font-awesome"
-          size={24}
+          name="md-basket"
+          type="ionicon"
+          size={26}
           color={tintColor}
         />
       )
@@ -152,9 +156,9 @@ const MainNavigator = createDrawerNavigator({
       drawerLabel: 'Contact Us',
       drawerIcon: ({ tintColor }) => (
         <Icon
-          name="address-card"
-          type="font-awesome"
-          size={22}
+          name="md-contact"
+          type="ionicon"
+          size={26}
           color={tintColor}
         />
       )
@@ -167,10 +171,10 @@ const MainNavigator = createDrawerNavigator({
       activeTintColor: '#15DB95',
       inactiveTintColor: '#fff',
       itemsContainerStyle: {
-        marginVertical: 0,
+        marginVertical: 10,
       },
       iconContainerStyle: {
-        opacity: 1
+        opacity: 1,
       }
     }
   });
@@ -207,7 +211,7 @@ const styles = StyleSheet.create({
   },
   drawerHeaderText: {
     color: '#0D19A3',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold'
   }
 })

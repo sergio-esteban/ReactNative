@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, FlatList } from 'react-native';
+import { ScrollView, View, Text, FlatList, StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,10 +9,12 @@ import { LEADERS } from '../shared/leaders';
 const History = () => {
   return (
     <Card
-      title='Our History'
+      title='Our History' titleStyle={{ color: '#282629', fontWeight: 'bold' }}
     >
-      <Text style={{ marginBottom: 10 }}>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</Text>
-      <Text>The restaurant traces its humble beginnings to The Frying Pan, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</Text>
+      <View style={styles.drawerHeader}>
+        <Text style={{ marginBottom: 10 }}>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</Text>
+        <Text>The restaurant traces its humble beginnings to The Frying Pan, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</Text>
+      </View>
     </Card>
   );
 }
@@ -63,7 +65,7 @@ class About extends Component {
     return (
       <ScrollView>
         <History />
-        <Card title='Corporate Leadership'>
+        <Card title='Corporate Leadership' titleStyle={{ color: '#282629', fontWeight: 'bold' }}>
           <FlatList
             data={this.state.leaders}
             renderItem={renderMenuItem}
@@ -75,4 +77,17 @@ class About extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  drawerHeader: {
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    borderBottomColor: '#bbb',
+  }
+})
 export default About;
