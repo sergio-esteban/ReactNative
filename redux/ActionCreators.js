@@ -76,6 +76,7 @@ export const addDishes = (dishes) => ({
 
 // === === === === === PROMOTIONS === === === === === ===
 
+
 export const fetchPromos = () => (dispatch) => {
 
   dispatch(promosLoading());
@@ -96,7 +97,7 @@ export const fetchPromos = () => (dispatch) => {
         throw errMess;
       })
     .then(response => response.json())
-    .then(promotions => dispatch(addPromos(promotions)))
+    .then(promos => dispatch(addPromos(promos)))
     .catch(error => dispatch(promosFailed(error.message)))
 }
 
@@ -109,19 +110,19 @@ export const promosFailed = (errmess) => ({
   payload: errmess
 })
 
-export const addPromos = (promotions) => ({
+export const addPromos = (promos) => ({
   type: ActionTypes.ADD_PROMOS,
-  payload: promotions
+  payload: promos
 })
 
 // === === === === === LEADERS === === === === === ===
 
 
-export const fetchPromos = () => (dispatch) => {
+export const fetchLeaders = () => (dispatch) => {
 
-  dispatch(promosLoading());
+  dispatch(leadersLoading());
 
-  return fetch(baseUrl + 'promotions')
+  return fetch(baseUrl + 'leaders')
     .then(response => {
       if (response.ok) {
         return response;
@@ -137,20 +138,20 @@ export const fetchPromos = () => (dispatch) => {
         throw errMess;
       })
     .then(response => response.json())
-    .then(promotions => dispatch(addPromos(promotions)))
-    .catch(error => dispatch(promosFailed(error.message)))
+    .then(leaders => dispatch(addLeaders(leaders)))
+    .catch(error => dispatch(leadersFailed(error.message)))
 }
 
-export const promosLoading = () => ({
-  type: ActionTypes.PROMOS_LOADING
+export const leadersLoading = () => ({
+  type: ActionTypes.LEADERS_LOADING
 })
 
-export const promosFailed = (errmess) => ({
-  type: ActionTypes.PROMOS_FAILED,
+export const leadersFailed = (errmess) => ({
+  type: ActionTypes.LEADERS_FAILED,
   payload: errmess
 })
 
-export const addPromos = (promotions) => ({
-  type: ActionTypes.ADD_PROMOS,
-  payload: promotions
+export const addLeaders = (leaders) => ({
+  type: ActionTypes.ADD_LEADERS,
+  payload: leaders
 })

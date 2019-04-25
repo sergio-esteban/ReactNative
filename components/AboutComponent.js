@@ -3,8 +3,16 @@ import { ScrollView, View, Text, FlatList, StyleSheet } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
 import LinearGradient from 'react-native-linear-gradient';
-import { LEADERS } from '../shared/leaders';
+// import { LEADERS } from '../shared/leaders'; ////that will be obtained from my redux store
+import { connect } from 'react-redux';
+import { baseUrl } from "../shared/baseUrl";
 
+
+const mapStateToProps = (state) => {
+  return {
+    leaders: state.leaders
+  }
+}
 
 const History = () => {
   return (
@@ -20,12 +28,7 @@ const History = () => {
 }
 
 class About extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      leaders: LEADERS
-    }
-  }
+
   static navigationOptions = {
     title: 'About Us'
   }
@@ -55,7 +58,7 @@ class About extends Component {
           // ViewComponent={LinearGradient}
           pad={20}
           // onPress={() => navigate('Dishdetail', { dishId: item.id })}
-          leftAvatar={{ rounded: true, source: require('./images/alberto.png') }}
+          leftAvatar={{ rounded: true, source: { uri: baseUrl + item.image } }}
         />
       );
     }
@@ -67,7 +70,7 @@ class About extends Component {
         <History />
         <Card title='Corporate Leadership' titleStyle={{ color: '#282629', fontWeight: 'bold' }}>
           <FlatList
-            data={this.state.leaders}
+            data={this.props.leaders.leaders}
             renderItem={renderMenuItem}
             keyExtractor={item => item.id.toString()}
           />
@@ -90,4 +93,4 @@ const styles = StyleSheet.create({
     borderBottomColor: '#bbb',
   }
 })
-export default About;
+export default connect(mapStateToProps)(About);
