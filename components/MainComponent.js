@@ -13,6 +13,8 @@ import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from "../redux/
 
 const mapStateToProps = state => {
   return {
+    dishes: state.dishes,
+    comments: state.comments,
   }
 }
 
@@ -238,8 +240,7 @@ class Main extends Component {
     return (
       <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
         <MainNavigator />
-        {/* <Menu dishes={this.state.dishes} onPress={(dishId) => this.onDishSelect(dishId)} />
-        <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} /> */}
+        {/* {() => <Menu dishes={this.props.dishes} />} */}
       </View>
     );
   }

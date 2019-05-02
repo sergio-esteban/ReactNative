@@ -168,3 +168,19 @@ export const addFavorite = (dishId) => ({
   type: ActionTypes.ADD_FAVORITE,
   payload: dishId
 })
+
+
+// === === === === === React Native UI Elements and Redux === === === === === ===
+
+
+export const postComment = comment => dispatch => {
+  setTimeout(() => {
+    dispatch(addComment(comment))
+  }, 2000)
+}
+
+// Action Object
+export const addComment = comment => ({
+  type: ActionTypes.ADD_COMMENT,
+  payload: comment
+})

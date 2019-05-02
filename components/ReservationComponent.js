@@ -10,7 +10,7 @@ class Reservation extends Component {
 
     this.state = {
       guests: 1,
-      smoking: false,
+      outsideTable: false,
       date: '',
       showModal: false
     }
@@ -33,7 +33,7 @@ class Reservation extends Component {
   resetForm() {
     this.setState({
       guests: 1,
-      smoking: false,
+      outsideTable: false,
       date: ''
     });
   }
@@ -56,23 +56,26 @@ class Reservation extends Component {
           </Picker>
         </View>
         <View style={styles.formRow}>
-          <Text style={styles.formLabel}>Smoking/Non-Smoking?</Text>
+          <Text style={styles.formLabel}>Outside Table?</Text>
           <Switch
             style={styles.formItem}
-            value={this.state.smoking}
-            onTrack='#512DA8'
-            onValueChange={(value) => this.setState({ smoking: value })}>
+            value={this.state.outsideTable}
+            trackColor={{ true: '#15DB95' }}
+            ios_backgroundColor='#15DB95'
+            thumbColor='#0D19A3'
+            onValueChange={(value) => this.setState({ outsideTable: value })}>
           </Switch>
         </View>
         <View style={styles.formRow}>
           <Text style={styles.formLabel}>Date and Time</Text>
           <DatePicker
-            style={{ flex: 2, marginRight: 20 }}
+            style={{ flex: 2, marginRight: 20, width: 200 }}
             date={this.state.date}
-            format=''
+            format='YYYY-MM-DD'
             mode="datetime"
-            placeholder="select date and Time"
-            minDate="2017-01-01"
+            minDate="2019-05-01"
+            maxDate="2019-12-01"
+            placeholder="Select date and Time"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             customStyles={{
@@ -90,7 +93,7 @@ class Reservation extends Component {
             onDateChange={(date) => { this.setState({ date: date }) }}
           />
         </View>
-        <View style={styles.formRow}>
+        <View style={{ padding: 20 }}>
           <Button
             onPress={() => this.handleReservation()}
             title="Reserve"
@@ -108,11 +111,12 @@ class Reservation extends Component {
           <View style={styles.modal}>
             <Text style={styles.modalTitle}>Your Reservation</Text>
             <Text style={styles.modalText}>Number of Guests: {this.state.guests}</Text>
-            <Text style={styles.modalText}>Smoking? : {this.state.smoking ? 'Yes' : 'No'}</Text>
+            <Text style={styles.modalText}>Outside Table? : {this.state.outsideTable ? 'Yes' : 'No'}</Text>
             <Text style={styles.modalText}>Date and Time: {this.state.date}</Text>
             <Button
               title="Close"
-              color="#512DA8"
+              color="#0D19A3"
+              accessibilityLabel="close this button your table it's already reserved"
               onPress={() => { this.toggleModal(); this.resetForm() }}>
             </Button>
           </View>
@@ -129,14 +133,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     flexDirection: 'row',
-    margin: 20
+    margin: 20,
+    backgroundColor: 'transparent',
+    padding: 20,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+    borderBottomColor: '#bbb',
   },
   formLabel: {
     fontSize: 18,
     flex: 2
   },
   formItem: {
-    flex: 1
+    flex: 1,
+    color: '#0D19A3',
+    padding: 20,
+    height: 50,
+    width: 100
   },
   modal: {
     justifyContent: 'center',
@@ -145,7 +159,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    backgroundColor: '#512DA8',
+    backgroundColor: '#0D19A3',
     textAlign: 'center',
     marginBottom: 20,
     color: 'white',
