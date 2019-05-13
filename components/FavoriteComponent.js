@@ -32,6 +32,8 @@ class Favorites extends Component {
         {
           text: 'Delete',
           type: 'delete',
+          color: '#0D19A3',
+          backgroundColor: '#15DB95',
           onPress: () => {
             Alert.alert(
               'Delete Favorite?',
