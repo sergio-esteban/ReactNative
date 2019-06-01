@@ -57,7 +57,7 @@ function RenderItem(props) {
           image={{ uri: baseUrl + item.image }}
           featuredTitleStyle={{ fontSize: 18, fontWeight: 'bold' }}
         >
-          <Text style={{ fontFamily: 'source-sans-pro', fontSize: 14 }}>
+          <Text>
             {item.description}{'\n'}{'\n'}
           </Text>
           <Button

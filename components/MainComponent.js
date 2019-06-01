@@ -6,6 +6,7 @@ import About from './AboutComponent';
 import Dishdetail from './DishdetailComponent';
 import Reservation from './ReservationComponent';
 import Favorites from './FavoriteComponent';
+import Login from './LoginComponent';
 import { View, Platform, ScrollView, StyleSheet, Image, Text } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
@@ -134,6 +135,23 @@ const FavoritesNavigator = createStackNavigator({
     })
   })
 
+const LoginNavigator = createStackNavigator({
+  Login: { screen: Login }
+}, {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#0D19A3"
+      },
+      headerTitleStyle: {
+        color: "#15DB95"
+      },
+      headerTintColor: "#15DB95",
+      headerLeft: <Icon name="menu" size={24}
+        iconStyle={{ color: 'white' }}
+        onPress={() => navigation.navigate('DrawerToggle')} />
+    })
+  })
+
 const CustomDrawerContentComponent = (props) => (
   <ScrollView>
     <SafeAreaView style={styles.container} forceInt={{ top: 'always', horizontal: 'never' }}>
@@ -151,6 +169,25 @@ const CustomDrawerContentComponent = (props) => (
 );
 
 const MainNavigator = createDrawerNavigator({
+  Login: {
+    screen: LoginNavigator,
+    navigationOptions: {
+      title: 'Login',
+      drawerLabel: 'Login',
+      drawerIcon: ({ tintColor, focused }) => (
+        <Icon
+          name="md-log-in"
+          type="ionicon"
+          size={26}
+          color={tintColor}
+          focused={true}
+          iconStyle={{
+            opacity: .8,
+          }}
+        />
+      )
+    }
+  },
   Home: {
     screen: HomeNavigator,
     navigationOptions: {
@@ -248,6 +285,7 @@ const MainNavigator = createDrawerNavigator({
     }
   }
 }, {
+    initialRouteName: 'Home',
     drawerBackgroundColor: '#0D19A3',
     contentComponent: CustomDrawerContentComponent,
     contentOptions: {
