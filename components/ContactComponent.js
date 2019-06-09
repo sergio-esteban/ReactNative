@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
+import { MailComposer } from "expo";
 import { ScrollView } from 'react-native-gesture-handler';
 import * as Animatable from 'react-native-animatable';
 // import { DISHES } from '../shared/dishes';
@@ -9,6 +10,14 @@ import * as Animatable from 'react-native-animatable';
 
 
 class Contact extends Component {
+
+  sendMail() {
+    MailComposer.composeAsync({
+      recipients: ['sergio_torres@zoho.com'],
+      subject: 'Enquiry',
+      body: 'To Whom it may concern:'
+    });
+  }
 
   static navigationOptions = {
     title: 'Contact Us'
@@ -28,6 +37,14 @@ class Contact extends Component {
               <Text style={{ marginBottom: 10 }}>Tel: +852 1234 5678</Text>
               <Text style={{ marginBottom: 10 }}>Fax: +852 8765 4321</Text>
               <Text style={{ marginBottom: 10 }}>Email: confusion@food.net</Text>
+            </View>
+            <View>
+              <Button
+                title='Send Email'
+                buttonStyle={{ backgroundColor: '#DC143C' }}
+                icon={<Icon name='mail' type='ionic' color="white" />}
+                onPress={this.sendMail}
+              />
             </View>
           </Card >
         </Animatable.View>

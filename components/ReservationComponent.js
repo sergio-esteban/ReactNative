@@ -27,7 +27,31 @@ class Reservation extends Component {
 
   handleReservation() {
     console.log(JSON.stringify(this.state));
-    this.toggleModal();
+    let message = 'Number of Guests: ' + this.state.guests +
+      '\nOutside Table? ' + this.state.outsideTable +
+      '\nDate and Time ' + this.state.date
+    Alert.alert(
+      'Your Reservation OK?',
+      message,
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+          onPress: () => {
+            console.log('Reservation Cancelled');
+            this.resetForm();
+          }
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            this.presentLocalNotification(this.state.date);
+            this.resetForm();
+          }
+        }
+      ],
+      { cancelable: false },
+    );
   }
 
   resetForm() {
@@ -39,24 +63,51 @@ class Reservation extends Component {
     });
   }
 
-  handleAlert() {
-    const { guests, outsideTable, date, showModal } = this.state;
-    Alert.alert(
-      'Your Reservation OK?',
-      `Number of guests: ${guests}\n Outside Table? ${outsideTable}\n Date and Time:${date}`,
-      [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-          onPress: () => this.resetForm(),
-        },
-        {
-          text: 'OK',
-          onPress: () => this.resetForm(),
-        },
-      ],
-      { cancelable: false },
-    );
+  // handleAlert() {
+  //   const { guests, outsideTable, date, showModal } = this.state;
+  //   Alert.alert(
+  //     'Your Reservation OK?',
+  //     `Number of guests: ${guests}\n Outside Table? ${outsideTable}\n Date and Time:${date}`,
+  //     [
+  //       {
+  //         text: 'Cancel',
+  //         style: 'cancel',
+  //         onPress: () => this.resetForm(),
+  //       },
+  //       {
+  //         text: 'OK',
+  //         onPress: () => this.resetForm(),
+  //       },
+  //     ],
+  //     { cancelable: false },
+  //   );
+  // }
+
+  async obtainNotificationPermission() {
+    let permission = await Persmissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS);
+    if (permission.status !== 'granted') {
+      permission = await Persmissions.askAsync(Permissions.USER_FACING_NOTIFICATIONS);
+      if (persmission.status !== 'granted') {
+        Alert.alert('Permission not granted to show notifications');
+      }
+    }
+    return permission;
+  }
+
+  async presentLocalNotification(date) {
+    await this.obtainNotificationPermission();
+    Notifications.presentLocalNotificationAsync({
+      title: 'Your Reservation',
+      body: 'Reservation for ' + date + ' requested',
+      ios: {
+        sound: true
+      },
+      android: {
+        sound: true,
+        vibrate: true,
+        color: '#512DA8'
+      }
+    });
   }
 
   render() {
@@ -117,7 +168,7 @@ class Reservation extends Component {
           </View>
           <View style={{ padding: 20 }}>
             <Button
-              onPress={() => this.handleAlert()}
+              onPress={() => this.handleReservation()}
               title="Reserve"
               color="#0D19A3"
               accessibilityLabel="Learn more about this purple button"
