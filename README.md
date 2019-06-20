@@ -1,6 +1,7 @@
 # Multiplatform Mobile App Development with React Native
 
-![restoApp](https://user-images.githubusercontent.com/25851867/59811824-2c443b00-92d1-11e9-8e28-dbcdf7252154.gif)
+
+![videoDescript](https://user-images.githubusercontent.com/25851867/59812130-809bea80-92d2-11e9-9091-64c08741a15e.gif)
 
 ## Getting Started
 
