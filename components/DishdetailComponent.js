@@ -86,7 +86,7 @@ function RenderDish(props) {
       url: url
     }, {
         dialogTitle: 'Share ' + title
-      })
+      });
   }
 
   if (dish != null) {

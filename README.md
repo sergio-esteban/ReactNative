@@ -1,5 +1,7 @@
 # Multiplatform Mobile App Development with React Native
 
+![restoApp](https://user-images.githubusercontent.com/25851867/59811824-2c443b00-92d1-11e9-8e28-dbcdf7252154.gif)
+
 ## Getting Started
 
 This course focuses on developing truly cross-platform, native iOS and Android apps using React Native (Ver 0.55) and the Expo SDK (Ver. 27.0.0). React Native uses modern JavaScript to get truly native UI and performance while sharing skills and code with the web. You will learn about UI development with React Native UI and layout support and access the native mobile platform's capabilities from Javascript using the Expo SDK. You should have already completed the Bootstrap 4 and the React courses in this specialization before proceeding with this course.
