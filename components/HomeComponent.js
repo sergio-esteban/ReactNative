@@ -92,17 +92,17 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.animatedValue = new Animated.Value(0);
-    this.state = {
-      fontLoaded: false,
-    }
+    // this.state = {
+    //   fontLoaded: false,
+    // }
   }
 
   async componentDidMount() {
-    await Font.loadAsync({
-      'source-sans-pro': require('../assets/fonts/SourceSansPro-Regular.ttf'),
-    });
+    // await Font.loadAsync({
+    //   'source-sans-pro': require('../assets/fonts/SourceSansPro-Regular.ttf'),
+    // });
     this.animate()
-    this.setState({ fontLoaded: true });
+    // this.setState({ fontLoaded: true });
   }
 
   animate() {

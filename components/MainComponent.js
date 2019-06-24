@@ -136,21 +136,22 @@ const FavoritesNavigator = createStackNavigator({
   })
 
 const LoginNavigator = createStackNavigator({
-  Login: { screen: Login }
+  Login: Login
 }, {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: "#0D19A3"
+        backgroundColor: "#512DA8"
       },
       headerTitleStyle: {
-        color: "#15DB95"
+        color: "#fff"
       },
-      headerTintColor: "#15DB95",
+      title: 'Login',
+      headerTintColor: "#fff",
       headerLeft: <Icon name="menu" size={24}
         iconStyle={{ color: 'white' }}
-        onPress={() => navigation.navigate('DrawerToggle')} />
+        onPress={() => navigation.toggleDrawer()} />
     })
-  })
+  });
 
 const CustomDrawerContentComponent = (props) => (
   <ScrollView>
